@@ -29,12 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const bookPages = document.createElement("p");
             bookPages.textContent = `Pages: ${book.pages}`;
 
-            // const removeButton = document.createElement("button");
-            // removeButton.textContent = "Remove";
-            // removeButton.addEventListener('click', () => {
-            //     removeBook(index);
-            //     displayBooks(myLibrary);
-            // });
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.addEventListener('click', () => {
+                removeBook(index);
+                // displayBooks(myLibrary);
+                displayBookDiv.innerHTML = '';
+                console.log(myLibrary)
+            });
 
             // Make this a checkList kinda thing?
             // const bookStatus = document.createElement("");
@@ -42,14 +44,15 @@ document.addEventListener('DOMContentLoaded', function () {
             displayBookDiv.appendChild(bookTitle);
             displayBookDiv.appendChild(bookAuthor);
             displayBookDiv.appendChild(bookPages);
+            displayBookDiv.appendChild(removeButton);
 
             container.appendChild(displayBookDiv);
         });
     }
 
-    // function removeBook(index) {
-    //     myLibrary.splice(index, 1);
-    // }
+    function removeBook(index) {
+        myLibrary.splice(index, 1);
+    }
 
     const newBookButton = document.querySelector(".new-book-button");
     const sidebar = document.querySelector(".sidebar");
