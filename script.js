@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // const myLibrary = [];
+    const myLibrary = [];
 
     function Book(name, author, pages, status) {
         this.name = name;
@@ -41,10 +41,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const newBookButton = document.querySelector(".new-book-button");
+    const sidebar = document.querySelector(".sidebar");
+    const bookForm = document.querySelector(".book-form")
 
-    const myLibrary = [
-        { name: "Book 1", author: "Author 1", pages: 200 },
-        { name: "Book 2", author: "Author 2", pages: 300 }
-    ];
-    displayBooks(myLibrary);
+    newBookButton.addEventListener('click', function () {
+        sidebar.classList.toggle("show");
+        // Bring up the form sidebar
+    });
+
+    bookForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const bookName = document.getElementById("bookName").value;
+        const author = document.getElementById("bookAuthor").value;
+        const pages = parseInt(document.getElementById("bookPages").value);
+        const status = document.getElementById("bookStatus").value;
+
+        addBookToLibrary(bookName, author, pages, status);
+
+        bookForm.reset();
+
+        sidebar.classList.remove("show");
+
+        // Clear the container before re-rendering the books
+        const container = document.querySelector(".container");
+        container.innerHTML = '';
+
+        displayBooks(myLibrary);
+    });
+
+    // const myLibrary = [
+    //     { name: "Book 1", author: "Author 1", pages: 200 },
+    //     { name: "Book 2", author: "Author 2", pages: 300 }
+    // ];
+    // displayBooks(myLibrary);
 });

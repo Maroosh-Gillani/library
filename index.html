@@ -10,8 +10,28 @@
 </head>
 
 <body>
+    <button class="new-book-button">NEW BOOK</button>
     <div class="container">
-        <button class="new-book-button">NEW BOOK</button>
+    </div>
+    <div class="sidebar">
+        <form class="book-form">
+            <label for="bookName">Book Name:</label>
+            <input type="text" name="bookName" id="bookName" required>
+
+            <label for="bookAuthor">Author:</label>
+            <input type="text" name="bookAuthor" id="bookAuthor" required>
+
+            <label for="bookPages">Number of Pages:</label>
+            <input type="number" name="bookPages" id="bookPages" required>
+
+            <label for="bookStatus">Status:</label>
+            <select name="bookStatus" id="bookStatus" required>
+                <option value="read">Read</option>
+                <option value="unread">Unread</option>
+            </select>
+
+            <button type="submit">Add Book</button>
+        </form>
     </div>
 </body>
 

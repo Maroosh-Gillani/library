@@ -1,0 +1,17 @@
+/* Add this to your CSS to style the sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    /* Offscreen to the right */
+    width: 300px;
+    height: 100%;
+    background-color: #f4f4f4;
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+}
+
+.sidebar.show {
+    right: 0;
+    /* Slide in from the right when shown */
+}
