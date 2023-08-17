@@ -29,21 +29,37 @@ document.addEventListener('DOMContentLoaded', function () {
             const bookPages = document.createElement("p");
             bookPages.textContent = `Pages: ${book.pages}`;
 
+            const bookStatus = document.createElement("p");
+            bookStatus.textContent = `Status: ${book.status}`;
+
             const removeButton = document.createElement("button");
             removeButton.textContent = "Remove";
             removeButton.addEventListener('click', () => {
                 removeBook(index);
-                // displayBooks(myLibrary);
                 displayBookDiv.innerHTML = '';
                 console.log(myLibrary)
             });
 
-            // Make this a checkList kinda thing?
-            // const bookStatus = document.createElement("");
+            const changeStatusButton = document.createElement("button");
+            if (book.status === "read") changeStatusButton.textContent = "Unread";
+            if (book.status === "unread") changeStatusButton.textContent = "Read";
+            changeStatusButton.addEventListener('click', () => {
+                if (book.status === "read") {
+                    book.status = "unread";
+                    changeStatusButton.textContent = "Read";
+                    bookStatus.textContent = `Status: ${book.status}`;
+                } else if (book.status === "unread") {
+                    book.status = "read";
+                    changeStatusButton.textContent = "Unread";
+                    bookStatus.textContent = `Status: ${book.status}`;
+                }
+            });
 
             displayBookDiv.appendChild(bookTitle);
             displayBookDiv.appendChild(bookAuthor);
             displayBookDiv.appendChild(bookPages);
+            displayBookDiv.appendChild(bookStatus);
+            displayBookDiv.appendChild(changeStatusButton);
             displayBookDiv.appendChild(removeButton);
 
             container.appendChild(displayBookDiv);
@@ -83,10 +99,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
         displayBooks(myLibrary);
     });
-
-    // const myLibrary = [
-    //     { name: "Book 1", author: "Author 1", pages: 200 },
-    //     { name: "Book 2", author: "Author 2", pages: 300 }
-    // ];
-    // displayBooks(myLibrary);
 });
